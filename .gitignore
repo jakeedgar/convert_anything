@@ -1,0 +1,31 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+*.js
+*.jsx
+*.map
+
+# Build output
+dist/
+build/
+out/
+tmp/
+*.log
+*.lock
+
+# macOS
+.DS_Store
+
+# Editor-specific
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencies (add more if needed)
+# Example: /dependency-name/
