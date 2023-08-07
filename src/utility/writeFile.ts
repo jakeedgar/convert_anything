@@ -2,7 +2,7 @@ import readline from 'readline'
 import fs from 'fs'
 
 // Define the utility function
-export const promptForFormatAndPath = (callback: (format: 'json' | 'txt', csvPath: string) => void) => {
+export const promptForFormatAndPath = (callback: (format: 'json' | 'txt', csvPath: string, fileDestination: string) => void) => {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -14,11 +14,14 @@ export const promptForFormatAndPath = (callback: (format: 'json' | 'txt', csvPat
     if (lowercaseFormat === 'json' || lowercaseFormat === 'txt') {
       rl.question('Enter the CSV file path: ', (csvPath) => {
         if (fs.existsSync(csvPath)) {
-          callback(lowercaseFormat, csvPath)
+          rl.question('Enter the destination file path: ', (fileDestination) => {
+            callback(lowercaseFormat, csvPath, fileDestination)
+            rl.close()
+          })
         } else {
           console.error('CSV file not found.')
+          rl.close()
         }
-        rl.close()
       })
     } else {
       console.error('Invalid format. Please enter "JSON" or "TXT".')
@@ -26,3 +29,5 @@ export const promptForFormatAndPath = (callback: (format: 'json' | 'txt', csvPat
     }
   })
 }
+
+export default promptForFormatAndPath

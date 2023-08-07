@@ -3,7 +3,7 @@ import fs from 'fs' // File system module to read and write files
 import csvParser from 'csv-parser' // CSV parser module to parse CSV data
 
 // Define a function to convert CSV to JSON with type inference using generics
-export default function convertCsvToJson<T>(filename: string): Promise<T[]> {
+export default function convertCsvToJson<T>(filename: string, destinationPath: string): Promise<T[]> {
   const results: T[] = [] // Create an empty array to store the parsed data
 
   // Create a Promise that will resolve when the CSV parsing is complete
@@ -17,7 +17,14 @@ export default function convertCsvToJson<T>(filename: string): Promise<T[]> {
       })
       .on('end', () => {
         // When the CSV parsing is complete, resolve the Promise with the results array
-        resolve(results)
+        // Write the results array as JSON to the destination file
+        fs.writeFile(destinationPath, JSON.stringify(results, null, 2), (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve(results)
+          }
+        })
       })
       .on('error', (err) => {
         // If there's an error during the parsing, reject the Promise with the error
