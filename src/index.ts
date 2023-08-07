@@ -1,6 +1,3 @@
-import fs from 'fs'
-import path from 'path'
-import readline from 'readline'
 import convertCsvToJson from './convertors/csvToJson'
 import convertCsvToTxt from './convertors/csvToText'
 import promptForFormatAndPath from './utility/writeFile'

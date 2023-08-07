@@ -9,24 +9,33 @@ export const promptForFormatAndPath = (callback: (format: SupportedFileTypes, cs
     output: process.stdout
   })
 
-  rl.question('Enter the desired output file format (JSON, TXT, or RTF): ', (format) => {
+  rl.question('Enter the initial file format of your file: ', (format) => {
     const lowercaseFormat = format.toLowerCase() as SupportedFileTypes
 
-    if (lowercaseFormat === 'json' || lowercaseFormat === 'txt' || lowercaseFormat === 'rtf') {
-      rl.question('Enter the CSV file path: ', (csvPath) => {
-        if (fs.existsSync(csvPath)) {
-          rl.question('Enter the destination file path: ', (fileDestination) => {
-            callback(lowercaseFormat, csvPath, fileDestination)
-            rl.close()
+    if (lowercaseFormat === 'txt') {
+      console.log('txt file found')
+      rl.close()
+    } else {
+      rl.question('Enter the desired output file format (JSON, TXT, or RTF): ', (format) => {
+        const lowercaseFormat = format.toLowerCase() as SupportedFileTypes
+
+        if (lowercaseFormat === 'json' || lowercaseFormat === 'txt' || lowercaseFormat === 'rtf') {
+          rl.question('Enter the CSV file path: ', (csvPath) => {
+            if (fs.existsSync(csvPath)) {
+              rl.question('Enter the destination file path: ', (fileDestination) => {
+                callback(lowercaseFormat, csvPath, fileDestination)
+                rl.close()
+              })
+            } else {
+              console.error('CSV file not found.')
+              rl.close()
+            }
           })
         } else {
-          console.error('CSV file not found.')
+          console.error('Invalid format. Please enter "JSON", "TXT" or "RTF.')
           rl.close()
         }
       })
-    } else {
-      console.error('Invalid format. Please enter "JSON", "TXT" or "RTF.')
-      rl.close()
     }
   })
 }
