@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Dark Magician",
+    "type": "Spellcaster",
+    "attribute": "DARK",
+    "level": 7,
+    "attack": 2500,
+    "defense": 2100
+  },
+  {
+    "name": "Blue-Eyes White Dragon",
+    "type": "Dragon",
+    "attribute": "LIGHT",
+    "level": 8,
+    "attack": 3000,
+    "defense": 2500
+  },
+  {
+    "name": "Red-Eyes Black Dragon",
+    "type": "Dragon",
+    "attribute": "DARK",
+    "level": 7,
+    "attack": 2400,
+    "defense": 2000
+  },
+  {
+    "name": "Dark Hole",
+    "type": "Spell",
+    "attribute": "Normal",
+    "effect": "Destroy all monsters on the field."
+  },
+  {
+    "name": "Mirror Force",
+    "type": "Trap",
+    "attribute": "Normal",
+    "effect": "When an opponent's monster declares an attack: Destroy all attacking monsters."
+  }
+]
