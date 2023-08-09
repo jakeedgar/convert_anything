@@ -1,8 +1,6 @@
-// Import required modules
-import fs from 'fs' // File system module to read and write files
-import csvParser from 'csv-parser' // CSV parser module to parse CSV data
+import fs from 'fs'
+import csvParser from 'csv-parser'
 
-// Define a function to convert CSV to JSON with type inference using generics
 export default function convertCsvToJson<T>(filename: string, destinationPath: string): Promise<T[]> {
   const results: T[] = [] // Create an empty array to store the parsed data
 

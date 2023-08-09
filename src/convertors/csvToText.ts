@@ -1,7 +1,6 @@
 import fs from 'fs'
 import csvParser from 'csv-parser'
 
-// Define a function to convert CSV to TXT format
 export default function convertCsvToTxt<T extends {}, K extends keyof T>(filename: string, destinationPath: string) {
   let columnNames: Array<T> = [] // Store the column names initially as null
   const readStream = fs.createReadStream(filename)
