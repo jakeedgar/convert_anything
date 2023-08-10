@@ -1,6 +1,6 @@
 import readline from 'readline'
 import fs from 'fs'
-import { BasicFileTypes } from '../../types/types'
+import { BasicFileTypes } from '../types/types'
 
 // Define the utility function
 export const promptForFormatAndPath = (callback: (format: BasicFileTypes, csvPath: string, fileDestination: string) => void) => {
